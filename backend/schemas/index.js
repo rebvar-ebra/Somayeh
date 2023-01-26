@@ -1,6 +1,6 @@
 import testmonials from "./testmonials";
 import abouts from "./abouts"
-import skills from "./skills"
+import skills from "./skill"
 import brands from "./brands"
 import works from "./works"
 import experiences from "./experiences"
