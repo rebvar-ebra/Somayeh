@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import * as ReactTooltip from 'react-tooltip'
+import { Tooltip as ReactTooltip } from 'react-tooltip'
 import { AppWrap, MotionWrap } from '../../wrapper';
 import { urlFor, client } from '../../client';
 import './Skills.scss';
@@ -15,18 +15,16 @@ const Skills = () => {
     const skillsQuery = '*[_type == "skills"]';
 
     client.fetch(query).then((data) => {
-      console.log('experince are fetched')
       setExperiences(data);
     });
 
     client.fetch(skillsQuery).then((data) => {
-      console.log('skill are fetched')
       
       setSkills(data);
     });
   }, []);
 
-  
+
   return (
    <>
          <h2 className="head-text">Skills & Experiences</h2>
@@ -49,17 +47,19 @@ const Skills = () => {
             </motion.div>
           ))}
         </motion.div>
-        <div className="app__skills-exp">
-          {experiences.map((experience) => (
-            <motion.div
-              className="app__skills-exp-item"
-              key={experience.year}
-            >
+
+        <motion.div className="app__skills-exp">
+           {experiences?.map((experience)=>(
+               <motion.div
+               className="app__skills-exp-item"
+               key={experience.year}
+             >
               <div className="app__skills-exp-year">
                 <p className="bold-text">{experience.year}</p>
               </div>
+               
               <motion.div className="app__skills-exp-works">
-                {experience.works.map((work) => (
+                {experience.works.map((work)=>(
                   <>
                     <motion.div
                       whileInView={{ opacity: [0, 1] }}
@@ -72,6 +72,7 @@ const Skills = () => {
                       <h4 className="bold-text">{work.name}</h4>
                       <p className="p-text">{work.company}</p>
                     </motion.div>
+
                     <ReactTooltip
                       id={work.name}
                       effect="solid"
@@ -80,12 +81,15 @@ const Skills = () => {
                     >
                       {work.desc}
                     </ReactTooltip>
+                      
                   </>
                 ))}
               </motion.div>
-            </motion.div>
-          ))}
-        </div>
+
+              </motion.div>
+            ))}             
+        </motion.div>
+        
       </div>
     </>
   )

@@ -10,8 +10,12 @@ export default{
         },
         {
             name:'bgColor',
-            title:'BgColor',
-            type:'string'
+            title:'favoriteColor',
+            type:'color',
+            options:{
+                disableAlpha: true
+
+            }
         },
         {
             name:'icon',
