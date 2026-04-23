@@ -4,6 +4,8 @@ import{Header,Footer,Skills,Work,About,Testimonials} from './container/index'
 import { Navbar } from './components/index'
 import './App.scss'
 const App = () => {
+  console.log('App component is rendering');
+
   return (
     <div className='app'>
         <Navbar />
